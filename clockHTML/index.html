@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Reloj PRO</title>
+    <link rel="stylesheet" href="styles/index.css">
+    <link rel="stylesheet" href="styles/odometer.css">
+  </head>
+  <body>
+  <h2>Reloj</h2>
+  <div class="container">
+
+    <div class="hora box">12</div>
+    <div class="puntos box"> : </div>
+    <div class="minutos box">00</div>
+    <div class="puntos box">:</div>
+    <div class="segundos box">00</div>
+  </div>
+  <script src="codes/odometer.js" charset="utf-8"></script>
+  <script>
+    const seg = document.querySelector(".segundos");
+    const minut = document.querySelector(".minutos");
+    const hour = document.querySelector(".hora");
+    const contar0 = new Odometer({
+      el: seg,
+      animation: '',
+      duration: 10,
+    })
+    const contar1 = new Odometer({
+      el: minut,
+      duration: 10,
+    })
+    const contar2 = new Odometer({
+      el: hour,
+      duration: 10,
+    })
+    var myVar = setInterval(myTimer, 1000);
+
+    function myTimer() {
+    var d = new Date();
+    seg.innerHTML = d.getSeconds();
+    minut.innerHTML = d.getMinutes();
+    hour.innerHTML = d.getHours();
+    }
+    function padsa(num, size) {
+    var s = num+"";
+    while (s.length < size) s = "0" + s;
+    return s;
+    }
+  </script>
+  <button class="btn" onclick="window.location.reload();" type="button" name="button">Reset</button>
+
+
+
+  </body>
+</html>
